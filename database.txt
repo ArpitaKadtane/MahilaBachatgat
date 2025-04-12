@@ -1,0 +1,84 @@
+CREATE DATABASE mahilabachatgat;
+\c mahilabachatgat
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    user_type VARCHAR(20) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    contact VARCHAR(25) UNIQUE NOT NULL,
+    age INTEGER,
+    address TEXT,
+    aadhaar_number VARCHAR(12) UNIQUE,
+    bank_account VARCHAR(50),
+    ifsc_code VARCHAR(30),
+    bank_name VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE groups (
+    id SERIAL PRIMARY KEY,
+    group_name VARCHAR(100) NOT NULL,
+    purpose TEXT,
+    rules TEXT,
+    leader_name VARCHAR(100),
+    city VARCHAR(50),
+    district VARCHAR(50),
+    member_count INTEGER,
+    eligibility_criteria TEXT,
+    saving_contribution VARCHAR(50),
+    contact_number VARCHAR(20),
+    bank_name VARCHAR(100),
+    bank_account VARCHAR(50),
+    ifsc_code VARCHAR(30),
+    created_by INTEGER REFERENCES users(id), -- user_type = 'leader'
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE group_join_requests (
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES groups(id),
+    member_id INTEGER REFERENCES users(id), -- user_type = 'member'
+    status VARCHAR(20) DEFAULT 'pending', -- pending, accepted, rejected
+    license_agreed BOOLEAN DEFAULT FALSE,
+    requested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE group_members (
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES groups(id),
+    member_id INTEGER REFERENCES users(id),
+    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE loan_applications (
+  id BIGSERIAL PRIMARY KEY,
+  full_name TEXT,
+  dob DATE,
+  mobile VARCHAR(15),
+  pan TEXT,
+  employment_type TEXT,
+  income NUMERIC(12,2),
+  loan_amount NUMERIC(12,2),
+  loan_purpose TEXT,
+  loan_tenure INTEGER,
+  address TEXT,
+  account_number TEXT,
+  bank_name TEXT,
+  ifsc_code TEXT,
+  repayment_plan TEXT,
+  submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+ALTER TABLE loan_applications
+ADD COLUMN actual_amount_received INTEGER,
+ADD COLUMN confirmation_date TIMESTAMP,
+ADD COLUMN confirmation_status VARCHAR(20) DEFAULT 'Pending';
