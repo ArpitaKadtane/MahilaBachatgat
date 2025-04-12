@@ -1,0 +1,50 @@
+/* Make page full height and footer sticky */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; /* Take all available vertical space */
+  padding: 20px;
+}
+
+/* Cards styling - already defined */
+.pending-card, .approved-card {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button.approve {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+button.reject {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+}
+
+button.edit {
+  background-color: yellow;
+  padding: 5px 12px;
+  margin-right: 5px;
+}
+
+button.delete {
+  background-color: red;
+  color: white;
+  padding: 5px 12px;
+}

@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="profile-update-container">
+  <h2 class="title">👤 प्रोफाइल अपडेट करा</h2>
+
+  <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
+    <div class="form-group">
+      <label>👤 पूर्ण नाव:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="member.full_name"
+        name="full_name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>📧 ई-मेल:</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="member.email"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>📞 संपर्क क्रमांक:</label>
+      <input
+        type="tel"
+        class="form-control"
+        [(ngModel)]="member.contact"
+        name="contact"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>🎂 वय:</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="member.age"
+        name="age"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>🏡 पत्ता:</label>
+      <textarea
+        class="form-control"
+        [(ngModel)]="member.address"
+        name="address"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>🆔 आधार क्रमांक:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="member.aadhaar_number"
+        name="aadhaar_number"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>🏦 बँक खाते क्रमांक:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="member.bank_account"
+        name="bank_account"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>🔢 IFSC कोड:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="member.ifsc_code"
+        name="ifsc_code"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label>🏦 बँकेचे नाव:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="member.bank_name"
+        name="bank_name"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">✅ प्रोफाइल अपडेट करा</button>
+  </form>
+</div>
+<app-footer></app-footer>

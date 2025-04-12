@@ -1,0 +1,96 @@
+<app-header></app-header>
+<div class="register-container">
+  <div class="register-box">
+    <h2>नोंदणी करा</h2>
+    <form (submit)="onRegister($event)">
+      <div class="form-group-container">
+        <!-- Type of Login -->
+        <div class="form-group">
+          <label for="userType">लॉगिन प्रकार</label>
+          <select id="userType" [(ngModel)]="userData.userType" name="userType" required>
+            <option value="" disabled selected>लॉगिन प्रकार निवडा</option>
+            <option value="leader">गटप्रमुख</option>
+            <option value="member">सदस्य</option>
+          </select>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">पूर्ण नाव</label>
+          <input type="text" id="fullName" [(ngModel)]="userData.fullName" name="fullName" required />
+        </div>
+      </div>
+
+      <div class="form-group-container">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">ई-मेल</label>
+          <input type="email" id="email" [(ngModel)]="userData.email" name="email" required />
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">पासवर्ड</label>
+          <input type="password" id="password" [(ngModel)]="userData.password" name="password" required />
+        </div>
+      </div>
+
+      <div class="form-group-container">
+        <!-- Contact Number -->
+        <div class="form-group">
+          <label for="contact">संपर्क क्रमांक</label>
+          <input type="tel" id="contact" [(ngModel)]="userData.contact" name="contact" required />
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age">वय</label>
+          <input type="number" id="age" [(ngModel)]="userData.age" name="age" required />
+        </div>
+      </div>
+
+      <!-- Address (Full Width) -->
+      <div class="form-group">
+        <label for="address">पत्ता</label>
+        <textarea id="address" [(ngModel)]="userData.address" name="address" required></textarea>
+      </div>
+
+      <div class="form-group-container">
+        <!-- Aadhaar Number -->
+        <div class="form-group">
+          <label for="aadhaar">आधार क्रमांक</label>
+          <input type="text" id="aadhaar" [(ngModel)]="userData.aadhaar" name="aadhaar" required />
+        </div>
+
+        <!-- Bank Account Number -->
+        <div class="form-group">
+          <label for="bankAccount">बँक खाते क्रमांक</label>
+          <input type="text" id="bankAccount" [(ngModel)]="userData.bankAccount" name="bankAccount" required />
+        </div>
+      </div>
+
+      <div class="form-group-container">
+        <!-- IFSC Code -->
+        <div class="form-group">
+          <label for="ifsc">IFSC कोड</label>
+          <input type="text" id="ifsc" [(ngModel)]="userData.ifsc" name="ifsc" required />
+        </div>
+
+        <!-- Bank Name -->
+        <div class="form-group">
+          <label for="bankName">बँकेचे नाव</label>
+          <input type="text" id="bankName" [(ngModel)]="userData.bankName" name="bankName" required />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn">नोंदणी करा</button>
+
+      <!-- Already have an account? Login -->
+      <div class="login-link">
+        <a (click)="goToLogin()">आधीच खाते आहे? लॉगिन करा</a>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

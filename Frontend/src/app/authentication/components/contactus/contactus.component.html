@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div class="contact-container">
+  <div class="contact-form">
+    <h2>📞 संपर्क फॉर्म</h2>
+    <p>आपल्याला काही शंका किंवा तक्रार असल्यास खालील फॉर्म भरा. गट व्यवस्थापक लवकरच संपर्क साधेल.</p>
+
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">आपले नाव:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="name" required #nameRef="ngModel" placeholder="आपले पूर्ण नाव टाका">
+        <div class="error" *ngIf="nameRef.invalid && nameRef.touched">आपले नाव आवश्यक आहे</div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">ईमेल:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required #emailRef="ngModel" placeholder="आपला ईमेल टाका">
+        <div class="error" *ngIf="emailRef.invalid && emailRef.touched">वैध ईमेल आवश्यक आहे</div>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">फोन नंबर:</label>
+        <input type="tel" id="phone" name="phone" [(ngModel)]="phone" required pattern="[6-9][0-9]{9}" #phoneRef="ngModel" placeholder="आपला फोन नंबर टाका">
+        <div class="error" *ngIf="phoneRef.invalid && phoneRef.touched">
+          <span *ngIf="phoneRef.errors?.['required']">फोन नंबर आवश्यक आहे</span>
+          <span *ngIf="phoneRef.errors?.['pattern']">वैध 10-अंकी फोन नंबर टाका</span>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label for="message">संदेश:</label>
+        <textarea id="message" name="message" [(ngModel)]="message" required #messageRef="ngModel" placeholder="आपला संदेश येथे टाका..."></textarea>
+        <div class="error" *ngIf="messageRef.invalid && messageRef.touched">संदेश आवश्यक आहे</div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit" [disabled]="contactForm.invalid">संदेश पाठवा</button>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>

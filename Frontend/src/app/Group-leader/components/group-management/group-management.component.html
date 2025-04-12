@@ -1,0 +1,93 @@
+<app-header></app-header>
+<div class="group-management-container">
+  <h1 class="title">🚀 गट व्यवस्थापन</h1>
+
+  <section class="new-group-section">
+    <h2 class="section-title">नवीन गट तयार करा</h2>
+
+    <form [formGroup]="groupForm" (ngSubmit)="createGroup()">
+      <div class="group-form">
+        <input
+          type="text"
+          formControlName="group_name"
+          placeholder="📌 गटाचे नाव"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="purpose"
+          placeholder="🎯 गटाचा उद्देश"
+          class="input-field"
+        />
+        <textarea
+          formControlName="rules"
+          placeholder="📜 गट नियम (उदा. बचतीचे नियम, कर्जाचे नियम)"
+          class="textarea-field"
+        ></textarea>
+        <input
+          type="text"
+          formControlName="leader_name"
+          placeholder="🧑‍💼 गट नेत्याचे नाव"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="city"
+          placeholder="🏙️ शहर (City)"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="district"
+          placeholder="🌍 जिल्हा (District)"
+          class="input-field"
+        />
+        <input
+          type="number"
+          formControlName="member_limit"
+          placeholder="👥 सदस्य संख्या"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="membership_criteria"
+          placeholder="📝 सदस्यता निकष"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="savings_contribution"
+          placeholder="💰 बचत योगदान"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="contact_number"
+          placeholder="☎️ गट संपर्क क्रमांक"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="bank_name"
+          placeholder="🏦 बँकेचे नाव"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="bank_account"
+          placeholder="💳 खाते क्रमांक"
+          class="input-field"
+        />
+        <input
+          type="text"
+          formControlName="ifsc_code"
+          placeholder="🔐 IFSC कोड"
+          class="input-field"
+        />
+
+        <button class="create-btn" type="submit">✅ गट तयार करा</button>
+      </div>
+    </form>
+  </section>
+</div>
+<app-footer></app-footer>

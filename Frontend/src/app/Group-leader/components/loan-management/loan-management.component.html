@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="loan-management-container">
+  <h2 class="heading">📑 आलेले कर्ज अर्ज</h2>
+
+  <div *ngIf="loading" class="loading">लोड होत आहे...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading && loanApplications.length === 0" class="no-data">
+    कोणतेही अर्ज सापडले नाहीत.
+  </div>
+
+  <div class="loan-card" *ngFor="let loan of loanApplications">
+    <h3>{{ loan.full_name }}</h3>
+    <p>📞 मोबाईल: {{ loan.mobile }}</p>
+    <p>💰 उत्पन्न: ₹{{ loan.income }}</p>
+    <p>🏦 कर्ज रक्कम: ₹{{ loan.loan_amount }}</p>
+    <p>📈 उद्देश: {{ loan.loan_purpose }}</p>
+    <p>📅 कालावधी: {{ loan.loan_tenure }} महिने</p>
+    <p>📑 परतफेड योजना: {{ loan.repayment_plan }}</p>
+    <p>🏡 पत्ता: {{ loan.address }}</p>
+
+    <!-- ✅ Newly added fields -->
+    <p>🏦 खाते क्रमांक: {{ loan.account_number }}</p>
+    <p>🏦 बँकेचे नाव: {{ loan.bank_name }}</p>
+    <p>🏦 IFSC कोड: {{ loan.ifsc_code }}</p>
+
+    <!-- ✅ Loan actions -->
+    <div class="loan-actions">
+      <label>
+        प्रत्यक्ष मिळालेली रक्कम:
+        <input type="number" [(ngModel)]="loan.actual_amount_received" min="0" />
+      </label>
+
+      <button (click)="acceptLoan(loan.id, loan.actual_amount_received)">मंजूर</button>
+      <button (click)="rejectLoan(loan.id)">नकार</button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

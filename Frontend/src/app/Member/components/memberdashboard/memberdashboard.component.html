@@ -1,0 +1,109 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+
+<div class="dashboard-container">
+  <div class="sidebar" *ngIf="sidebarOpen" (click)="$event.stopPropagation()">
+    <div class="sidebar-header">
+      <button class="close-sidebar" (click)="closeSidebar()">✕</button>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item active">
+        <a (click)="navigateToCreditSaving()"><img src="assets/salary.png" /> बचत जमा करणे</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToloan()"
+          ><img src="assets/home.png" /> कर्जासाठी अर्ज</a
+        >
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToLoanConfirm()"
+          ><img src="assets/loan.png" /> कर्ज पुष्टी</a
+        >
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToTransactionHistory()"><img src="assets/document.png" /> व्यवहार इतिहास</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="#"><img src="assets/megaphone.png" /> संवाद आणि पारदर्शकता</a>
+      </li> -->
+      <li class="nav-item">
+        <a (click)="navigateToprofile()"
+          ><img src="assets/edit.png" /> प्रोफाइल आणि माहिती</a
+        >
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToChangePassword()"
+          ><img src="assets/padlock.png" /> पासवर्ड बदला</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <section class="member-info">
+      <h2>Welcome, {{ member.full_name }}</h2>
+      <p>Email: {{ member.email }}</p>
+      <p>Contact: {{ member.contact }}</p>
+    </section>
+
+    <section class="groups-section">
+      <h3>📢 उपलब्ध गट</h3>
+      <div class="group-list">
+        <div *ngFor="let group of groups" class="group-card">
+          <h4>{{ group.group_name }}</h4>
+          <p><strong>उद्देश:</strong> {{ group.purpose }}</p>
+          <p><strong>नेते:</strong> {{ group.leader_name }}</p>
+          <p><strong>शहर:</strong> {{ group.city }}</p>
+          <p><strong>जिल्हा:</strong> {{ group.district }}</p>
+
+          <p><strong>सदस्य मर्यादा:</strong> {{ group.member_count }}</p>
+          <p><strong>निकष:</strong> {{ group.eligibility_criteria }}</p>
+          <p><strong>बचत:</strong> {{ group.saving_contribution }}</p>
+          <p><strong>संपर्क:</strong> {{ group.contact_number }}</p>
+          <p><strong>बँक नाव:</strong> {{ group.bank_name }}</p>
+          <p><strong>बँक खाते क्रमांक:</strong> {{ group.bank_account }}</p>
+          <p><strong>IFSC कोड:</strong> {{ group.ifsc_code }}</p>
+
+          <button class="join-btn" (click)="openTrustModal(group)">
+            गट जॉईन करा
+          </button>
+        </div>
+      </div>
+      <!-- Trust Modal -->
+      <div *ngIf="selectedGroup" class="overlay">
+        <div class="modal">
+          <h2>🛡️ विश्वासपूर्वक निवड करा</h2>
+          <p><strong>गट नाव:</strong> {{ selectedGroup.group_name }}</p>
+          <p>
+            <strong>लायसन्स प्रकार:</strong> {{ selectedGroup.license_type }}
+          </p>
+          <p>
+            आपण <strong>{{ selectedGroup.leader_name }}</strong> यांच्या गटात
+            सामील होणार आहात. कृपया खात्री करून पुढे जा.
+          </p>
+
+          <!-- Trust Terms Section -->
+          <div class="trust-terms">
+            <h3>अटी व शर्ती:</h3>
+            <ul>
+              <li>हा गट डिजिटल फायनान्ससाठी प्रमाणित आहे.</li>
+              <li>आपली वैयक्तिक माहिती सुरक्षित ठेवली जाईल.</li>
+              <li>सदस्यत्व फक्त खात्रीशीर मोबाइल नंबर वापरून दिले जाईल.</li>
+              <li>कृपया कोणतीही आर्थिक देवाणघेवाण करताना सतर्क राहा.</li>
+              <li>
+                या गटात सामील झाल्यानंतर, तुमच्या नोंदणीची माहिती लॉग केली जाईल.
+              </li>
+            </ul>
+          </div>
+
+          <div class="actions">
+            <button (click)="confirmJoinGroup()">हो, गट जॉईन करा ✅</button>
+            <button (click)="cancelJoin()">रद्द करा ❌</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<app-footer></app-footer>

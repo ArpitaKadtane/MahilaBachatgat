@@ -1,0 +1,28 @@
+<div class="header">
+  <!-- Hamburger Menu (Left Side) -->
+  <div class="left-section">
+    <a (click)="navigatetohamburger()"><button class="hamburger" (click)="toggleSidebar()">&#9776;</button></a>
+    <h2 class="brand-name">महिला बचत गट</h2>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav>
+    <a routerLink="/">मुख्य पृष्ठ</a>
+    <a routerLink="/about">आमच्याबद्दल</a>
+    <a routerLink="/transparent">पारदर्शक व्यवहार</a>
+    <a routerLink="/savings-loans">बचत आणि कर्ज</a>
+    <a routerLink="/contactus">संपर्क</a>
+  </nav>
+
+  <div class="user-profile" (click)="toggleUserMenu()">
+    <img src="assets/avtar.png" />
+    <span class="user-name">Arpita</span>
+    <span class="user-dropdown">▼</span>
+
+    <!-- Dropdown Menu -->
+    <div class="user-menu" [class.show]="userMenuOpen">
+      <a class="user-menu-item" (click)="logout()">Logout</a>
+      <a class="user-menu-item delete" (click)="deleteAccount()">Delete Account</a>
+    </div>
+  </div>
+</div>

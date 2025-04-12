@@ -1,0 +1,84 @@
+.profile-update-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #003366;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #003366;
+  display: inline-block;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adds space between the emoji and text */
+}
+
+.form-control {
+  width: calc(100% - 20px);
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: 0.3s ease-in-out;
+  margin: 0 auto;
+  display: block;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+  background: #ffffff;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .profile-update-container {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+}

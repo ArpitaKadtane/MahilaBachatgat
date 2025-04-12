@@ -1,0 +1,225 @@
+<!-- Government Top Bar -->
+<div class="govt-top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <a href="#" class="govt-logo">
+        <img src="assets/bharatsarkar.png" alt="भारत सरकार" />
+        <span>भारत सरकार</span>
+      </a>
+      <span class="separator"></span>
+      <a href="#" class="dept-logo">
+        <img src="assets/maharastrasarkar.jpg" alt="महाराष्ट्र सरकार" />
+        <span>महाराष्ट्र सरकार</span>
+      </a>
+    </div>
+    <div class="current-date">
+      <i class="fa-regular fa-calendar"></i>
+      {{ currentDate | date : "fullDate" : "mr" }}
+    </div>
+    <div class="top-bar-right">
+      <div class="accessibility-options">
+        <button
+          class="text-size"
+          title="टेक्स्ट साइज बदला"
+          (click)="toggleFontSize()"
+        >
+          <i class="fa-solid fa-text-height"></i>
+        </button>
+        <button class="color-mode" title="रंग बदला" (click)="toggleColorMode()">
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Secondary Nav -->
+<div class="secondary-nav">
+  <div class="container">
+    <!-- Empty div to maintain the structure -->
+    <div></div>
+  </div>
+</div>
+<!-- home.component.html -->
+<app-header></app-header>
+
+<!-- Enhanced Hero Section with National Colors and Government Style -->
+<div class="hero-section">
+  <div class="tricolor-stripe"></div>
+  <div class="ashoka-chakra"></div>
+
+  <div class="image-slider">
+    <img
+      src="assets/backgroundimg.jpg"
+      class="slider-img active"
+      alt="Image 1"
+    />
+    <img src="assets/img4.jpg" class="slider-img" alt="Image 2" />
+    <img src="assets/img5.jpg" class="slider-img" alt="Image 3" />
+  </div>
+
+  <div class="overlay">
+    <h1>महिला बचतगटात आपले सहर्ष स्वागत आहे!</h1>
+    <p>
+      आर्थिक स्वातंत्र्य आणि सामूहिक विकासासाठी महिला बचत गट - आपल्या
+      अर्थव्यवस्थेला एक नवीन दिशा!
+    </p>
+  </div>
+</div>
+
+<!-- Enhanced Announcement Bar with Animation -->
+<div class="announcement-bar">
+  <div class="marquee">
+    <span>
+      <i class="fa-solid fa-bullhorn"></i> महत्त्वाची सूचना: नवीन बचत गट योजना
+      जाहीर! | <i class="fa-solid fa-star"></i> व्याज दरात विशेष सूट! |
+      <i class="fa-solid fa-award"></i> आजपर्यंत १०,००० महिलांना आर्थिक सहाय्य
+    </span>
+  </div>
+</div>
+
+<!-- Key Features Section with Government Style Cards -->
+<section class="features-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="emblem-decoration"></div>
+      <h2 class="section-title">बचत गटाचे फायदे</h2>
+    </div>
+    <div class="feature-cards">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-icon">
+          <i [class]="feature.icon"></i>
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced Success Stories Section -->
+<section class="success-stories section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="emblem-decoration"></div>
+      <h2 class="section-title">यशोगाथा</h2>
+    </div>
+    <div class="stories-carousel">
+      <div class="story-card" *ngFor="let story of successStories">
+        <div class="story-image">
+          <img [src]="story.image" [alt]="story.name" />
+        </div>
+        <div class="govt-seal">
+          <img src="assets/sarkarishikka.jpg" alt="सरकारी शिक्का" />
+        </div>
+        <div class="story-content">
+          <h3>{{ story.name }} - '{{ story.groupName }}'</h3>
+          <p>"{{ story.story }}"</p>
+          <span class="testimonial-quote">— {{ story.name }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-navigation">
+      <button class="carousel-nav prev" (click)="scrollCarousel('left')">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel-nav next" (click)="scrollCarousel('right')">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section with Fixed Row Layout -->
+<section class="how-it-works section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="emblem-decoration"></div>
+      <h2 class="section-title">बचत गट कसे कार्य करतात?</h2>
+    </div>
+    <div class="steps">
+      <div class="step-row">
+        <div class="step" *ngFor="let step of howItWorksSteps; let i = index">
+          <div class="step-number">{{ step.number }}</div>
+          <div class="step-content">
+            <h3>{{ step.title }}</h3>
+            <p>{{ step.description }}</p>
+          </div>
+          <div
+            class="connecting-line"
+            *ngIf="i < howItWorksSteps.length - 1"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Government News Section -->
+<section class="govt-news section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="emblem-decoration"></div>
+      <h2 class="section-title">महिला बचतगट ताजा बातम्या</h2>
+    </div>
+    <div class="news-container">
+      <div class="loader" *ngIf="isLoadingNews">
+        <div class="spinner"></div>
+        <p>बातम्या लोड होत आहेत...</p>
+      </div>
+      <div class="news-grid" *ngIf="!isLoadingNews && newsItems.length > 0">
+        <div class="news-card" *ngFor="let news of newsItems">
+          <div class="news-content">
+            <div class="news-source">
+              <img
+                [src]="news.sourceIcon"
+                [alt]="news.source"
+                class="source-icon"
+              />
+              <span class="source-name">{{ news.source }}</span>
+              <span class="news-date">{{
+                news.publishedDate | date : "shortDate" : "mr"
+              }}</span>
+            </div>
+            <h3 class="news-title">{{ news.title }}</h3>
+            <p class="news-excerpt">{{ news.description }}</p>
+            <a [href]="news.link" target="_blank" class="read-more"
+              >अधिक वाचा <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="no-news" *ngIf="!isLoadingNews && newsItems.length === 0">
+        <p>
+          सध्या कोणत्याही बातम्या उपलब्ध नाहीत. कृपया नंतर पुन्हा प्रयत्न करा.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Official Recognition Section with Government Logos -->
+<section class="recognition-section section-padding">
+  <div class="container">
+    <div class="section-header">
+      <div class="emblem-decoration"></div>
+      <h2 class="section-title">सरकारी मान्यता</h2>
+    </div>
+    <div class="logo-container">
+      <div class="govt-logo" *ngFor="let partner of govtPartners">
+        <img [src]="partner.logo" [alt]="partner.name" />
+        <p class="partner-name">{{ partner.name }}</p>
+      </div>
+    </div>
+    <div class="official-text">
+      <div class="govt-stamp"></div>
+      <p>
+        महिला बचत गट हे राष्ट्रीय ग्रामीण आजीविका मिशन (NRLM) अंतर्गत
+        मान्यताप्राप्त आहेत. सर्व बचत गटांना सरकारी योजनांचा लाभ घेण्यासाठी
+        पात्र आहेत.
+      </p>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,117 @@
+<app-header></app-header>
+
+<div class="loan-application-container">
+  <h1 class="title">🏦 कर्जासाठी अर्ज करा</h1>
+  <section class="loan-form-section">
+    <form [formGroup]="loanForm" (ngSubmit)="onSubmit()" class="loan-form">
+      <label>👤 पूर्ण नाव:</label>
+      <input
+        type="text"
+        formControlName="fullName"
+        placeholder="तुमचे पूर्ण नाव टाका"
+        required
+      />
+
+      <label>📅 जन्मतारीख:</label>
+      <input type="date" formControlName="dob" required />
+
+      <label>📞 मोबाइल नंबर:</label>
+      <input
+        type="tel"
+        formControlName="mobile"
+        placeholder="10-अंकी मोबाइल नंबर"
+        required
+      />
+
+      <label>🆔 PAN क्रमांक:</label>
+      <input
+        type="text"
+        formControlName="pan"
+        placeholder="PAN नंबर टाका"
+        required
+      />
+
+      <label>💼 नोकरीचा प्रकार:</label>
+      <select formControlName="employmentType" required>
+        <option value="">निवडा</option>
+        <option value="नोकरीत">नोकरीत</option>
+        <option value="स्वतःचा व्यवसाय">स्वतःचा व्यवसाय</option>
+      </select>
+
+      <label>💰 वार्षिक उत्पन्न:</label>
+      <input
+        type="number"
+        formControlName="income"
+        placeholder="उदाहरण: 5,00,000"
+        required
+      />
+
+      <label>💵 कर्जाची रक्कम (₹):</label>
+      <input
+        type="number"
+        formControlName="loanAmount"
+        placeholder="कर्जाची रक्कम टाका"
+        required
+      />
+
+      <label>📈 कर्जाचा उद्देश:</label>
+      <select formControlName="loanPurpose" required>
+        <option value="व्यवसाय">व्यवसाय</option>
+        <option value="शिक्षण">शिक्षण</option>
+        <option value="वैयक्तिक खर्च">वैयक्तिक खर्च</option>
+        <option value="गृह कर्ज">गृह कर्ज</option>
+      </select>
+
+      <label>📅 कर्ज कालावधी (महिने):</label>
+      <input
+        type="number"
+        formControlName="loanTenure"
+        placeholder="उदा. 12, 24, 36 महिने"
+        required
+      />
+
+      <label>🏡 स्थायी पत्ता:</label>
+      <textarea
+        formControlName="address"
+        placeholder="तुमचा संपूर्ण पत्ता टाका"
+        required
+      ></textarea>
+
+      <label>🏦 बँक खाते क्रमांक:</label>
+      <input
+        type="text"
+        formControlName="accountNumber"
+        placeholder="उदा. 1234567890"
+        required
+      />
+
+      <label>🏦 बँकेचे नाव:</label>
+      <input
+        type="text"
+        formControlName="bankName"
+        placeholder="उदा. SBI, HDFC"
+        required
+      />
+
+      <label>🏦 IFSC कोड:</label>
+      <input
+        type="text"
+        formControlName="ifscCode"
+        placeholder="उदा. SBIN0001234"
+        required
+      />
+
+      <label>📑 परतफेड योजना:</label>
+      <select formControlName="repaymentPlan" required>
+        <option value="मासिक परतफेड">मासिक परतफेड</option>
+        <option value="त्रैमासिक परतफेड">त्रैमासिक परतफेड</option>
+      </select>
+
+      <button type="submit" class="submit-btn" [disabled]="loanForm.invalid">
+        ✅ अर्ज करा
+      </button>
+    </form>
+  </section>
+</div>
+
+<app-footer></app-footer>

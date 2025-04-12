@@ -1,0 +1,31 @@
+<div class="page-container">
+  <app-header></app-header>
+
+  <div class="content">
+    <h3>✅ नवीन सदस्य मंजूर करणे</h3>
+    <div *ngFor="let request of pendingRequests" class="pending-card">
+      <span>🧑‍🤝‍🧑 {{ request.full_name }}</span>
+      <button
+        class="button approve"
+        (click)="approveRequest(request.request_id)"
+      >
+        मंजूर
+      </button>
+      <button class="reject" (click)="rejectRequest(request.request_id)">
+        नकार
+      </button>
+    </div>
+
+    <hr />
+
+    <h4>📄 मंजूर सदस्य यादी</h4>
+    <div *ngFor="let member of approvedMembers" class="approved-card">
+      <span>🧑‍🤝‍🧑 {{ member.full_name }}</span>
+      <button class="delete" (click)="removeMember(member.member_id)">
+        काढून टाका
+      </button>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

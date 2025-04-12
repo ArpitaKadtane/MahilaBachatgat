@@ -1,0 +1,164 @@
+<app-header (toggleSidebarEvent)="toggleSidebar()"></app-header>
+
+<div class="dashboard-container">
+  <div
+    class="sidebar"
+    [class.active]="sidebarOpen"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="sidebar-header">
+      <button class="close-sidebar" (click)="closeSidebar()">✕</button>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a (click)="navigateToGroupManagement()">
+          <img src="assets/people.png" /> गट व्यवस्थापन
+        </a>
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToUserManagement()"><img src="assets/user.png" /> सदस्य व्यवस्थापन</a>
+      </li>
+      <li class="nav-item">
+        <a href="#"><img src="assets/save-money.png" /> बचत व्यवस्थापन</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToLoanManagement()"><img src="assets/signing.png" /> कर्ज व्यवस्थापन</a>
+      </li>
+      <li class="nav-item">
+        <a href="#"><img src="assets/report.png" /> आर्थिक अहवाल</a>
+      </li>
+      <li class="nav-item">
+        <a href="#"><img src="assets/meeting.png" /> बैठकी व सुचना</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="#"><img src="assets/support.png" /> तक्रारनिवारण आणि सहाय्य</a>
+      </li> -->
+      <li class="nav-item">
+        <a (click)="navigateToprofile()"
+          ><img src="assets/edit.png" alt="Profile Icon" /> प्रोफाइल आणि
+          माहिती</a
+        >
+      </li>
+      <li class="nav-item">
+        <a (click)="navigateToChangePassword()">
+          <img src="assets/padlock.png" alt="Change Password Icon" />
+          पासवर्ड बदला
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="welcome-section">
+    <h1>स्वागत, {{ leaderName }} <span class="wave-emoji">👋</span></h1>
+    <p>आपण बचत गट प्रमुख म्हणून लॉग इन आहात.</p>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    <p>माहिती लोड होत आहे...</p>
+  </div>
+
+  <div *ngIf="!isLoading" class="dashboard-content">
+    <!-- Personal Card -->
+    <div class="card personal-card">
+      <div class="card-header">
+        <h2>वैयक्तिक माहिती</h2>
+      </div>
+      <div class="card-body">
+        <div class="info-row">
+          <span class="label">नाव:</span>
+          <span class="value">{{ leaderDetails.full_name }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">मोबाईल:</span>
+          <span class="value">{{ leaderDetails.contact }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">ईमेल:</span>
+          <span class="value">{{ leaderDetails.email || "उपलब्ध नाही" }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">बँक:</span>
+          <span class="value">{{
+            leaderDetails.bank_name || "उपलब्ध नाही"
+          }}</span>
+        </div>
+        <a (click)="navigateToprofile()"
+          ><button class="edit-btn">माहिती संपादित करा</button></a
+        >
+      </div>
+    </div>
+    <!-- Statistics Cards -->
+    <div class="statistics-container">
+      <div class="stat-card">
+        <div class="stat-icon members-icon">👥</div>
+        <div class="stat-details">
+          <span class="stat-value">{{ memberCount }}</span>
+          <span class="stat-label">एकूण सदस्य</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon savings-icon">💰</div>
+        <div class="stat-details">
+          <span class="stat-value">₹{{ totalSavings }}</span>
+          <span class="stat-label">एकूण बचत</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon loans-icon">📝</div>
+        <div class="stat-details">
+          <span class="stat-value">₹{{ totalLoans }}</span>
+          <span class="stat-label">एकूण कर्ज</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon pending-icon">⏳</div>
+        <div class="stat-details">
+          <span class="stat-value">{{ loansPending }}</span>
+          <span class="stat-label">प्रलंबित कर्ज विनंती</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="actions-container">
+      <h2>त्वरित क्रिया</h2>
+      <div class="action-buttons">
+        <button class="action-btn">
+          <span class="action-icon">👤</span>
+          <span class="action-text">नवीन सदस्य जोडा</span>
+        </button>
+        <button class="action-btn">
+          <span class="action-icon">💸</span>
+          <span class="action-text">नवीन कर्ज नोंदवा</span>
+        </button>
+        <button class="action-btn">
+          <span class="action-icon">💹</span>
+          <span class="action-text">बचत नोंदवा</span>
+        </button>
+        <button class="action-btn">
+          <span class="action-icon">📊</span>
+          <span class="action-text">अहवाल तयार करा</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Upcoming Meetings -->
+    <div class="meetings-container">
+      <h2>आगामी बैठका</h2>
+      <div class="meeting-card">
+        <div class="meeting-date">15-04-2025</div>
+        <div class="meeting-details">
+          <div class="meeting-title">मासिक बचत गट बैठक</div>
+          <div class="meeting-time">सकाळी 10:00 - 11:30</div>
+          <div class="meeting-location">गावातील सामुदायिक हॉल</div>
+        </div>
+      </div>
+      <button class="add-meeting-btn">नवीन बैठक जोडा</button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

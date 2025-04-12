@@ -1,0 +1,141 @@
+.group-management-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+.sidebar {
+  width: 250px;
+  background-color: #FF6000;
+  color: white;
+  height: 100%;
+  position: fixed;
+  top: 60px; /* Same height as header */
+  left: -250px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+
+  &.active {
+    left: 0;
+  }
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* User Info */
+.user-info {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  color: #fff;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual Nav Item */
+.nav-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      object-fit: contain;
+      filter: brightness(0) invert(1); // Icon white on orange
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &.active a {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.input-field.ng-invalid.ng-touched,
+.textarea-field.ng-invalid.ng-touched {
+  border-color: red;
+  background-color: #ffe6e6;
+}
+
+
+.group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.textarea-field {
+  height: 70px;
+  resize: none;
+}
+
+.create-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.create-btn:hover {
+  background: #218838;
+}
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
