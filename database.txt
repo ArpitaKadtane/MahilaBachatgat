@@ -82,3 +82,18 @@ ALTER TABLE loan_applications
 ADD COLUMN actual_amount_received INTEGER,
 ADD COLUMN confirmation_date TIMESTAMP,
 ADD COLUMN confirmation_status VARCHAR(20) DEFAULT 'Pending';
+
+
+CREATE TABLE payment (
+    payment_id SERIAL PRIMARY KEY,
+    member_id INTEGER NOT NULL,
+    amount NUMERIC(10, 2) NOT NULL,
+    card_number VARCHAR(16) NOT NULL,
+    payment_status VARCHAR(20) DEFAULT 'SUCCESS',
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_member
+        FOREIGN KEY (member_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
+);
