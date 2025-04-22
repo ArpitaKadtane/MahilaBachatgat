@@ -97,3 +97,6 @@ CREATE TABLE payment (
         REFERENCES users(id)
         ON DELETE CASCADE
 );
+
+ALTER TABLE users
+ADD COLUMN upi_id VARCHAR(100) UNIQUE;
